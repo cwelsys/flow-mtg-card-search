@@ -1,0 +1,25 @@
+{
+	"name": "mtg-card-search",
+	"version": "1.0.0",
+	"description": "FlowLauncher plugin for searching Magic: The Gathering cards using Scryfall API",
+	"main": "./src/main.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cwelsys/fl-mtg-card-search.git"
+	},
+	"keywords": [
+		"flowlauncher",
+		"magic-the-gathering",
+		"mtg"
+	],
+	"author": "cwelsys",
+	"license": "MIT",
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"node-fetch": "^3.3.2",
+		"open": "^9.1.0"
+	}
+}
