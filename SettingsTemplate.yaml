@@ -1,0 +1,31 @@
+#$schema: https://www.flowlauncher.com/schemas/settings-template.schema.json
+body:
+  - type: textBlock
+    attributes:
+      description: >-
+        You can use advanced Scryfall search syntax. Examples: |
+        c:red cmc:1 (red cards with mana cost 1) |
+        type:creature power>=4 (creatures with power 4 or more) |
+        set:war rarity:mythic (mythic cards from War of the Spark) |
+        Visit https://scryfall.com/docs/syntax for full syntax guide
+
+  - type: input
+    attributes:
+      name: searchDelay
+      label: Search Delay (ms)
+      description: Delay before searching (ms)
+      defaultValue: 69
+
+  - type: input
+    attributes:
+      name: maxResults
+      label: Max Results
+      description: Maximum number of cards to show per search
+      defaultValue: 10
+
+  - type: input
+    attributes:
+      name: cacheSize
+      label: Cache Size
+      description: Maximum number of card images to cache
+      defaultValue: 100
