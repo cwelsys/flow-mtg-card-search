@@ -1,0 +1,13 @@
+{
+	"ID": "f0bb9b83262d4106b0e2e17cc0168ebd",
+	"ActionKeyword": "mtg",
+	"Name": "MTG Card Search",
+	"Description": "Search for Magic: The Gathering cards using the Scryfall API",
+	"Author": "cwelsys",
+	"Version": "0.1.6",
+	"Language": "JavaScript",
+	"Website": "https://github.com/cwelsys/flow-mtg-card-search",
+	"ExecuteFileName": "src/main.js",
+	"IcoPath": "img/app.png",
+	"SettingsTemplate": "SettingsTemplate.yaml"
+}
