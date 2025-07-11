@@ -20,15 +20,21 @@ a plugin for fetching info about cards via the [Scryfall](https://scryfall.com/)
 
 ## Installation
 
-1. Copy the plugin folder to your FlowLauncher plugins directory
-2. Restart FlowLauncher
+Via Flow Launcher:
+```console 
+pm install https://github.com/cwelsys/flow-mtg-card-search/releases/download/v0.1.6/MTG-Card-Search-0.1.6.zip
+```
+
+Manually:
+
+Download the [latest release](https://github.com/cwelsys/flow-mtg-card-search/releases) and extract it into your FlowLauncher plugins directory.
 
 ## Requirements
 
 -   [FlowLauncher](https://github.com/Flow-Launcher/Flow.Launcher)
 -   [Node.js](https://github.com/nodejs/node) 14.0.0 or higher
 
-> Note: inline image previews in FlowLauncher are very low res [by design](https://github.com/Flow-Launcher/Flow.Launcher/issues/2030), Quicklook allows you to view in native res. The tradeoff is the previews open behind flow launcher (or infront of if you enable 'always on top' in the QL settings file).
+> Note: inline image previews in Flow Launcher are very low res [by design](https://github.com/Flow-Launcher/Flow.Launcher/issues/2030), Quicklook allows you to view in native res. The tradeoff is the previews open behind flow launcher (or infront of if you enable 'always on top' in the QL settings file).
 
 ## Credits
 
