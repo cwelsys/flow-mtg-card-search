@@ -3,11 +3,12 @@ name: Publish Release
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    tags:
+      - '*'
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: write
     steps:
@@ -25,12 +26,10 @@ jobs:
       - run: echo ${{steps.version.outputs.prop}}
       - name: Install dependencies
         run: |
-          npm install
-          zip -r MTG-Card-Search-${{steps.version.outputs.prop}}.zip -x '*.git*'
+          npm install --omit=dev
+          tar -a -c -f MTG-Card-Search-${{steps.version.outputs.prop}}.zip --exclude .git* --exclude *.zip --exclude cache --exclude history --exclude node_modules/.cache *
       - name: Publish
         uses: softprops/action-gh-release@v2
         with:
           files: 'MTG-Card-Search-${{steps.version.outputs.prop}}.zip'
           tag_name: 'v${{steps.version.outputs.prop}}'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
