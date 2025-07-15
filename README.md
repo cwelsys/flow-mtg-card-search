@@ -20,14 +20,14 @@ a plugin for fetching info about cards via the [Scryfall](https://scryfall.com/)
 
 ## Installation
 
-Via Flow Launcher:
+[Via Flow Launcher](https://www.flowlauncher.com/plugins/mtg-card-search-f0bb9b83262d4106b0e2e17cc0168ebd/):
 ```console 
-pm install https://github.com/cwelsys/flow-mtg-card-search/releases/download/v0.1.6/MTG-Card-Search-0.1.6.zip
+pm install MTG Card Search by cwelsys
 ```
 
 Manually:
 
-Download the [latest release](https://github.com/cwelsys/flow-mtg-card-search/releases) and extract it into your FlowLauncher plugins directory.
+Download the [latest release](https://github.com/cwelsys/flow-mtg-card-search/releases) and extract it into your [FlowLauncher plugins directory](https://www.flowlauncher.com/docs/#/usage-tips?id=plugins).
 
 ## Requirements
 
