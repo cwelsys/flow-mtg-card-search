@@ -7,7 +7,9 @@ import open from '../node_modules/open/index.js';
 
 const __dirname = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../');
 const cachePath = path.resolve(__dirname, 'cache');
-const { method, parameters, settings } = JSON.parse(process.argv[2]);
+const parsedArgs = JSON.parse(process.argv[2] ?? '{}');
+const { method = 'query', parameters = [], settings: rawSettings } = parsedArgs ?? {};
+const settings = rawSettings ?? {};
 
 const searchDelay = settings.searchDelay ?? 69;
 const maxResults = settings.maxResults ?? 10;
@@ -20,8 +22,9 @@ function delay(ms) {
 }
 
 async function handleQuery() {
-	const query = parameters[0];
-	if (query.length < 2) {
+	const rawQuery = parameters?.[0];
+	const query = typeof rawQuery === 'string' ? rawQuery : '';
+	if (!query || query.length < 2) {
 		console.log(JSON.stringify({ result: [] }));
 	} else if (query.startsWith(':cache')) {
 		showDeleteCache();
@@ -36,14 +39,18 @@ async function handleQuery() {
 if (method === 'query') {
 	handleQuery();
 } else if (method === 'open') {
-	open(parameters[0]);
+	const target = parameters?.[0];
+	if (typeof target === 'string' && target.length) {
+		open(target);
+	}
 } else if (method === 'deleteCache') {
 	deleteCache();
 }
 
 async function getCards(query) {
+	const safeQuery = typeof query === 'string' ? query : '';
 	const apiUrl = `https://api.scryfall.com/cards/search?q=${encodeURIComponent(
-		query
+		safeQuery
 	)}&format=json&include_extras=false&include_multilingual=false&include_variations=false&order=name&dir=asc&page=1&lang=${preferredLanguage}`;
 
 	try {
@@ -55,7 +62,9 @@ async function getCards(query) {
 		}
 
 		const cards = [];
-		const cardData = responseJson.data.slice(0, maxResults);
+		const cardData = Array.isArray(responseJson.data)
+			? responseJson.data.slice(0, maxResults)
+			: [];
 
 		cardData.forEach(function (card) {
 			const cardInfo = {
@@ -70,11 +79,8 @@ async function getCards(query) {
 				rarity: card.rarity,
 				set_name: card.set_name,
 				scryfall_uri: card.scryfall_uri,
-				image_uri: card.image_uris
-					? card.image_uris.normal
-					: card.card_faces && card.card_faces[0].image_uris
-					? card.card_faces[0].image_uris.normal
-					: null,
+				image_uri:
+					card.image_uris?.normal ?? card.card_faces?.[0]?.image_uris?.normal ?? null,
 				id: card.id,
 				loyalty: card.loyalty || '',
 				artist: card.artist || '',
