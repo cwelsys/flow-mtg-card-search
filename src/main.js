@@ -9,9 +9,9 @@ const __dirname = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..
 const cachePath = path.resolve(__dirname, 'cache');
 const { method, parameters, settings } = JSON.parse(process.argv[2]);
 
-const searchDelay = settings.searchDelay ?? 69;
-const maxResults = settings.maxResults ?? 10;
-const cacheSize = settings.cacheSize ?? 100;
+const searchDelay = settings?.searchDelay ?? 69;
+const maxResults = settings?.maxResults ?? 10;
+const cacheSize = settings?.cacheSize ?? 100;
 
 const preferredLanguage = 'en';
 
