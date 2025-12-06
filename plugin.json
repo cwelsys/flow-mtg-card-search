@@ -4,7 +4,7 @@
 	"Name": "MTG Card Search",
 	"Description": "Search for Magic: The Gathering cards using the Scryfall API",
 	"Author": "cwelsys",
-	"Version": "0.1.7",
+	"Version": "0.1.8",
 	"Language": "JavaScript",
 	"Website": "https://github.com/cwelsys/flow-mtg-card-search",
 	"ExecuteFileName": "src/main.js",
